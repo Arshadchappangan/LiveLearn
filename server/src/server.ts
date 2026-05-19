@@ -4,6 +4,7 @@ import cors from "cors";
 import helmet from "helmet";
 
 import authRoutes from "@modules/auth/presentation/routes/auth.routes";
+import { errorMiddleware } from "./app/shared/middleware/error.middleware";
 
 import { connectDB } from "./config/database";
 
@@ -21,6 +22,7 @@ app.use(cors());
 app.use(helmet());
 
 app.use("/api/auth", authRoutes);
+app.use(errorMiddleware);
 
 const PORT = process.env.PORT || 5000;
 

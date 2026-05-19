@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import { IUserRepository } from "../../domain/repositories/IUserRepository";
 import { SignUpDTO } from "../dto/SignUpDTO";
 import { User } from "../../domain/entities/User"; 
+import { AppError } from "@/app/shared/errors/AppError";
 
 export class SignupUserUseCase {
     constructor (private userRepo: IUserRepository) {}
@@ -11,7 +12,7 @@ export class SignupUserUseCase {
         // Check if user with the same email already exists
         const existingUser = await this.userRepo.findByEmail(data.email);
         if(existingUser) {
-            throw new Error("User with this email already exists");
+            throw new AppError("User with this email already exists", 409);
         }
 
         // Hash the password
