@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import helmet from "helmet";
+import cookieParser from "cookie-parser";
 
 import authRoutes from "@modules/auth/presentation/routes/auth.routes";
 import { errorMiddleware } from "./app/shared/middleware/error.middleware";
@@ -20,6 +21,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use(helmet());
+
+app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use(errorMiddleware);

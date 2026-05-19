@@ -7,5 +7,6 @@ const router = Router();
 const controller = new AuthController();
 
 router.post("/signup", asyncHandler(controller.signup.bind(controller)));
+router.post("/login", asyncHandler(controller.login.bind(controller)));
 
 export default router;
