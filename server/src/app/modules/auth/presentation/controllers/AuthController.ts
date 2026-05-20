@@ -60,4 +60,16 @@ export class AuthController {
             )
         )
     }
+
+    async logout(req: Request, res: Response) {
+        res.clearCookie("refreshToken", {
+            httpOnly: true,
+            secure: false,
+            sameSite: "strict"
+        })
+
+        return res.status(200).json(
+            ApiResponse.success(null, "User logged out successfully")
+        )
+    }
 }

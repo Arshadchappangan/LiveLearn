@@ -10,6 +10,7 @@ const controller = new AuthController();
 router.post("/signup", asyncHandler(controller.signup.bind(controller)));
 router.post("/login", asyncHandler(controller.login.bind(controller)));
 router.post("/refresh-token", asyncHandler(controller.refreshToken.bind(controller)));
+router.post("/logout", asyncHandler(controller.logout.bind(controller)));
 router.get("/me", authMiddleware, (req, res) => {
     res.json({success: true, user: req.user});
 })
