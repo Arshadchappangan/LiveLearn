@@ -21,4 +21,8 @@ export class JwtService {
     verifyToken (token : string) {
         return jwt.verify(token, process.env.JWT_SECRET_KEY!) as { userId : string };
     }
+
+    verifyRefreshToken (token : string) {
+        return jwt.verify(token, process.env.JWT_REFRESH_SECRET_KEY!) as { userId : string };
+    }
 }
