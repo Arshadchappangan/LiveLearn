@@ -17,4 +17,8 @@ export class JwtService {
             { expiresIn : "7d" }
         )
     }
+
+    verifyToken (token : string) {
+        return jwt.verify(token, process.env.JWT_SECRET_KEY!) as { userId : string };
+    }
 }

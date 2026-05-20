@@ -1,0 +1,16 @@
+{
+  "extends": "./server/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./server",
+    "paths": {
+      "@/*": ["src/*"],
+      "@core/*": ["src/core/*"],
+      "@modules/*": ["src/app/modules/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@config/*": ["src/config/*"],
+      "@realtime/*": ["src/realtime/*"]
+    },
+    "typeRoots": ["./server/node_modules/@types"]
+  },
+  "include": ["server/src/**/*"]
+}
