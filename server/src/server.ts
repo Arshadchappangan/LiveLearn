@@ -6,6 +6,8 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 
 import authRoutes from "@modules/auth/presentation/routes/auth.routes";
+import userRouter from "@modules/users/presentation/routes/user.routes";
+
 import { errorMiddleware } from "./app/shared/middleware/error.middleware";
 
 import { connectDB } from "./config/database";
@@ -26,6 +28,8 @@ app.use(helmet());
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRouter);
+
 app.use(errorMiddleware);
 
 const PORT = process.env.PORT || 5000;

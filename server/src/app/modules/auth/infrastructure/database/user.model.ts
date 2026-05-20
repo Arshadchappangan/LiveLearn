@@ -20,6 +20,14 @@ const UserSchema = new Schema({
         required : true,
         default : "learner"
     },
+    avatarUrl : {
+        type : String,
+        default : null
+    },
+    bio : {
+        type : String,
+        default : null
+    },
     isVerified : {
         type : Boolean,
         default : false
