@@ -43,5 +43,27 @@ export class UserProfileRepository implements IUserProfileRepository {
             updatedUser.createdAt
         )
     }
+
+    async updateAvatar(userId: string, avatarUrl: string): Promise<UserProfile> {
+        
+        const updatedUser = await UserModel.findByIdAndUpdate(
+            userId,
+            { avatarUrl },
+            { new: true }
+        )
+
+        if(!updatedUser) throw new AppError("User not found", 404);
+
+        return new UserProfile(
+            updatedUser.id,
+            updatedUser.name,
+            updatedUser.email,
+            updatedUser.role,
+            updatedUser.avatarUrl || null,
+            updatedUser.bio || null,
+            updatedUser.isVerified,
+            updatedUser.createdAt
+        )
+    }
     
 }

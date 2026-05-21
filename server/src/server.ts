@@ -1,6 +1,6 @@
+import "@/config/env";
 import "@/types/express";
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
@@ -11,9 +11,6 @@ import userRouter from "@modules/users/presentation/routes/user.routes";
 import { errorMiddleware } from "./app/shared/middleware/error.middleware";
 
 import { connectDB } from "./config/database";
-
-
-dotenv.config();
 
 const app = express();
 
